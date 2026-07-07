@@ -1,6 +1,8 @@
 
 
 public class Officer {
+    private int officer_id;
+    private int address_id;
     final private int badge_number;
     private String first_name;
     private String last_name;
@@ -16,11 +18,19 @@ public class Officer {
         this.rank = rank.toUpperCase();
     }
 
+    public int getOfficer_id() {
+        return officer_id;
+    }
+
+    public int getAddress_id() {
+        return address_id;
+    }
+
     public int getBadge_number() {
         return badge_number;
     }
 
-    public String setFirst_name() {
+    public String getFirst_name() {
         return first_name;
     }
 

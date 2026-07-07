@@ -1,2 +1,0 @@
-ALTER TABLE officer
-ADD COLUMN age INT NOT NULL CHECK (age >= 18);
