@@ -75,3 +75,34 @@ DROP COLUMN location;
 
 ALTER TABLE department
 DROP COLUMN location;
+
+
+
+ALTER TABLE case_officer
+DROP FOREIGN KEY case_officer_ibfk_2;
+
+ALTER TABLE case_officer
+DROP COLUMN officer_id;
+
+ALTER TABLE officer
+MODIFY COLUMN officer_id int;
+
+ALTER TABLE officer
+DROP COLUMN officer_id;
+
+
+DROP TABLE case_officer;
+
+
+
+
+
+CREATE TABLE case_officer (
+case_id INT NOT NULL,
+badge_number INT NOT NULL,
+department_id INT NOT NULL,
+PRIMARY KEY (case_id, badge_number),
+FOREIGN KEY (case_id) REFERENCES criminal_case(case_id),
+FOREIGN KEY (badge_number) REFERENCES officer(badge_number),
+FOREIGN KEY (department_id) REFERENCES department(department_id)
+);
