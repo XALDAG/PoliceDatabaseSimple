@@ -106,3 +106,21 @@ FOREIGN KEY (case_id) REFERENCES criminal_case(case_id),
 FOREIGN KEY (badge_number) REFERENCES officer(badge_number),
 FOREIGN KEY (department_id) REFERENCES department(department_id)
 );
+
+
+
+
+
+alter table case_officer
+drop foreign key case_officer_ibfk_2;
+
+alter table officer
+modify column badge_number int not null auto_increment;
+
+
+alter table case_officer
+add constraint case_officer_ibfk_2
+foreign key (badge_number)
+references officer(badge_number);
+
+

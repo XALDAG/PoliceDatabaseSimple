@@ -19,12 +19,11 @@ public class Address {
     }
 
     // Full constructor
-    public Address(int addressId, String addr1, String addr2, String city,
+    public Address(String addr1, String addr2, String city,
                    String stateProvince, String postalCode, String country,
                    double lat, double lng,
                    LocalDateTime createdAt, LocalDateTime updatedAt) {
 
-        this.addressId = addressId;
         this.addr1 = addr1;
         this.addr2 = addr2;
         this.city = city;

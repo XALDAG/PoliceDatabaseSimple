@@ -1,25 +1,30 @@
 
 
 public class Officer {
-    private int officer_id;
     private int address_id;
-    final private int badge_number;
+    private int badge_number;
     private String first_name;
     private String last_name;
     private String rank;
+    private int age;
 
-    public Officer(int badge_number, String first_name,
-                   String last_name, String rank) throws IllegalArgumentException{
+    public Officer(String first_name,
+                   String last_name, String rank, int age, int address_id) throws IllegalArgumentException{
 
-        if (badge_number < 0) throw new IllegalArgumentException("BADGE NUMBER MUST BE GREATER THAN 0");
-        this.badge_number = badge_number;
         this.first_name = first_name.toUpperCase();
         this.last_name = last_name.toUpperCase();
         this.rank = rank.toUpperCase();
+        this.age = age;
+        this.address_id = address_id;
     }
 
-    public int getOfficer_id() {
-        return officer_id;
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public int getAddress_id() {
@@ -40,6 +45,14 @@ public class Officer {
 
     public String getRank() {
         return rank;
+    }
+
+    public void setAddress_id(int address_id) {
+        this.address_id = address_id;
+    }
+
+    public void setBadge_number(int badge_number) {
+        this.badge_number = badge_number;
     }
 
     public void setRank(String new_rank) {

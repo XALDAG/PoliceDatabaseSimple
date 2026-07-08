@@ -1,4 +1,6 @@
+import javax.xml.crypto.Data;
 import java.sql.*;
+import java.time.LocalDateTime;
 
 public class AddressDAO {
     public void addAddress(Address address) throws SQLException {
@@ -32,4 +34,32 @@ public class AddressDAO {
         }
         address.setAddressId(address_id);
     }
+
+
+    public void removeAddressbyID(int address_id) throws SQLException {
+        Connection connection = DataBaseConnection.getConnection();
+
+        String sql = "DELETE FROM address WHERE address_id = ?";
+
+        PreparedStatement stmt = connection.prepareStatement(sql);
+
+        stmt.setInt(1, address_id);
+        stmt.executeUpdate();
+    }
+
+    public void changeAddr1(int address_id, String addr) throws SQLException {
+        Connection connection = DataBaseConnection.getConnection();
+
+        String sql = "UPDATE address " +
+                "SET address_line1 = ? " +
+                "WHERE address_id = ?";
+
+        PreparedStatement stmt = connection.prepareStatement(sql);
+
+        stmt.setString(1, addr);
+        stmt.setInt(2, address_id);
+
+        stmt.executeUpdate();
+    }
+
 }
