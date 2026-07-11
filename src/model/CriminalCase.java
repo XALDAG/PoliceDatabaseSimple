@@ -16,6 +16,11 @@ public class CriminalCase {
         this.court_date = court_date;
     }
 
+    public void setCase_id(int case_id) {
+        this.case_id = case_id;
+    }
+
+
     public int getCase_id() {
         return case_id;
     }

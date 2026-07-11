@@ -6,10 +6,13 @@ public class Crime {
     private String category;
     private int address_id;
 
-    public Crime(String name, String category, int address_id) {
+    public Crime(String name, String category) {
         this.name = name.toUpperCase();
         this.category = category.toUpperCase();
-        this.address_id = address_id;
+    }
+
+    public void setCrime_id(int crime_id) {
+        this.crime_id = crime_id;
     }
 
     public int getAddress_id() {

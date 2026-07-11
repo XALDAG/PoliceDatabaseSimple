@@ -3,7 +3,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 
 public class AddressDAO {
-    public void addAddress(Address address) throws SQLException {
+    public void addAddress(Address address) throws Exception {
         Connection connection = DataBaseConnection.getConnection();
 
         String sql = "INSERT INTO address (address_line1, address_line2," +
@@ -31,8 +31,9 @@ public class AddressDAO {
         int address_id = -1;
         if (rs.next()) {
             address_id = rs.getInt(1);
+            address.setAddressId(address_id);
         }
-        address.setAddressId(address_id);
+        else throw new Exception("Problem with Generated Key in AddressDAO.addAddress");
     }
 
 

@@ -139,15 +139,8 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "addressId=" + addressId +
-                ", addr1='" + addr1 + '\'' +
-                ", city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", lat=" + lat +
-                ", lng=" + lng +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return addr1 + ", " + addr2 + ", " +
+                postalCode + ", " + city + ", (lat, long): (" +
+                lat + ", " + lng + ")";
     }
 }

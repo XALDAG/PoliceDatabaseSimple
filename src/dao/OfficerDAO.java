@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class OfficerDAO {
 
-    public void addOfficer(Officer officer) throws SQLException {
+    public void addOfficer(Officer officer) throws Exception {
         Connection connection = DataBaseConnection.getConnection();
         String sql = "INSERT INTO officer (first_name, last_name, officer_rank, age, address_id)" +
                 "VALUES (?,?,?,?,?)";
@@ -22,8 +22,9 @@ public class OfficerDAO {
         int badge_number = -1;
         if (rs.next()) {
             badge_number = rs.getInt(1);
+            officer.setBadge_number(badge_number);
         }
-        officer.setBadge_number(badge_number);
+        else throw new Exception("Result Set problem in OfficerDAO.addOfficer");
     }
 
     public void removeOfficerbyBadgeNumber(int badge_number) throws SQLException {

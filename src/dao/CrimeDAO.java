@@ -1,18 +1,21 @@
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class CrimeDAO {
 
     public void addCrime(Crime crime) throws SQLException {
         Connection connection = DataBaseConnection.getConnection();
-        String sql = "INSERT INTO crime (crime_name, crime_category, address_id) " +
-                "VALUES (?,?,?)";
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        String sql = "INSERT INTO crime (crime_name, crime_category) " +
+                "VALUES (?,?)";
+        PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1,crime.getName());
         stmt.setString(2, crime.getCategory());
-        stmt.setInt(3, crime.getAddress_id());
         stmt.executeUpdate();
+        ResultSet rs = stmt.getGeneratedKeys();
+        if (rs.next()) {
+            int crime_id = rs.getInt(1);
+            crime.setCrime_id(crime_id);
+        }
+        else throw new SQLException();
     }
 
     public void removeCrime(int id) throws SQLException {
