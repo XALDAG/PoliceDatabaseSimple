@@ -125,3 +125,13 @@ references officer(badge_number);
 
 
 alter table officer add column gender enum('Male','Female') not null;
+
+
+
+alter table case_officer
+drop foreign key case_officer_ibfk_3;
+
+alter table case_officer
+drop column department_id;
+
+drop table department;

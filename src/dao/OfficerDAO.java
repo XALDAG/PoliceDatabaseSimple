@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class OfficerDAO {
 
-    public void add_officer(Officer officer) throws SQLException {
+    public void addOfficer(Officer officer) throws SQLException {
         Connection connection = DataBaseConnection.getConnection();
         String sql = "INSERT INTO officer (first_name, last_name, officer_rank, age, address_id)" +
                 "VALUES (?,?,?,?,?)";
@@ -38,7 +38,7 @@ public class OfficerDAO {
     }
 
 
-    public void changeRank(int badge_number, String rank) throws SQLException {
+    public void updateRank(int badge_number, String rank) throws SQLException {
         Connection connection = DataBaseConnection.getConnection();
 
         String sql = "UPDATE officer " +

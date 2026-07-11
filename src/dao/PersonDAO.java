@@ -26,7 +26,7 @@ public class PersonDAO {
         stmt.executeUpdate();
     }
 
-    public void update_age(int id, int age) throws SQLException {
+    public void updateAge(int id, int age) throws SQLException {
         Connection connection = DataBaseConnection.getConnection();
         String sql = "UPDATE person SET age = ? WHERE person_id = ?";
         PreparedStatement stmt = connection.prepareStatement(sql);

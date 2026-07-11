@@ -22,13 +22,13 @@ public class Main {
 //            }
 //        }
 
-        Address address = new Address("Rue de Dison", null, "Verviers",
-                "Liege", "4800", "Belgique", 33.9, 29.9,
+        Address address = new Address("Street of Big Port", null, "Miami",
+                "Florida", "1922", "USA", 33.9, 29.9,
                 LocalDateTime.now(), LocalDateTime.now());
         AddressDAO addressDAO = new AddressDAO();
         addressDAO.addAddress(address);
 
-        Person person = new Person("Amerkhan", "Zhabrailov", 22, Gender.MALE, address.getAddressId());
+        Person person = new Person("Michael", "de Santa", 41, Gender.MALE, address.getAddressId());
         PersonDAO personDAO = new PersonDAO();
         personDAO.addPerson(person);
 
