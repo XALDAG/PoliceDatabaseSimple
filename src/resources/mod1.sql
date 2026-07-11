@@ -124,3 +124,4 @@ foreign key (badge_number)
 references officer(badge_number);
 
 
+alter table officer add column gender enum('Male','Female') not null;

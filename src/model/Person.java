@@ -10,11 +10,12 @@ public class Person {
     private Gender gender;
 
     public Person(String first_name, String last_name,
-                  int age, Gender gender) {
+                  int age, Gender gender, int address_id) {
         this.first_name = first_name.toUpperCase();
         this.last_name = last_name.toUpperCase();
         this.age = age;
         this.gender = gender;
+        this.address_id = address_id;
     }
 
     public int getAddress_id() {
@@ -55,6 +56,14 @@ public class Person {
 
     public void setLast_name(String last_name) {
         this.last_name = last_name;
+    }
+
+    public void setAddress_id(int address_id) {
+        this.address_id = address_id;
+    }
+
+    public void setPerson_id(int person_id) {
+        this.person_id = person_id;
     }
 
     @Override

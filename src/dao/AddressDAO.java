@@ -47,19 +47,5 @@ public class AddressDAO {
         stmt.executeUpdate();
     }
 
-    public void changeAddr1(int address_id, String addr) throws SQLException {
-        Connection connection = DataBaseConnection.getConnection();
-
-        String sql = "UPDATE address " +
-                "SET address_line1 = ? " +
-                "WHERE address_id = ?";
-
-        PreparedStatement stmt = connection.prepareStatement(sql);
-
-        stmt.setString(1, addr);
-        stmt.setInt(2, address_id);
-
-        stmt.executeUpdate();
-    }
 
 }

@@ -7,17 +7,26 @@ public class Officer {
     private String last_name;
     private String rank;
     private int age;
+    private Gender gender;
 
     public Officer(String first_name,
-                   String last_name, String rank, int age, int address_id) throws IllegalArgumentException{
+                   String last_name, String rank, int age, Gender gender, int address_id) throws IllegalArgumentException{
 
         this.first_name = first_name.toUpperCase();
         this.last_name = last_name.toUpperCase();
         this.rank = rank.toUpperCase();
         this.age = age;
         this.address_id = address_id;
+        this.gender = gender;
     }
 
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
 
     public void setAge(int age) {
         this.age = age;
