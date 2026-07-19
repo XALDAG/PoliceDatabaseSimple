@@ -4,6 +4,24 @@ import java.time.LocalDateTime;
 
 public class AddressDAO {
     public void addAddress(Address address) throws Exception {
+        PreparedStatement stmt = getPreparedStatement(address);
+        stmt.setDouble(7, address.getLat());
+        stmt.setDouble(8, address.getLng());
+        stmt.setObject(9, address.getCreatedAt());
+        stmt.setObject(10, address.getUpdatedAt());
+
+        stmt.executeUpdate();
+
+        ResultSet rs = stmt.getGeneratedKeys();
+        int address_id = -1;
+        if (rs.next()) {
+            address_id = rs.getInt(1);
+            address.setAddressId(address_id);
+        }
+        else throw new Exception("Problem with Generated Key in AddressDAO.addAddress");
+    }
+
+    private static PreparedStatement getPreparedStatement(Address address) throws SQLException {
         Connection connection = DataBaseConnection.getConnection();
 
         String sql = "INSERT INTO address (address_line1, address_line2," +
@@ -20,20 +38,7 @@ public class AddressDAO {
         stmt.setString(4, address.getStateProvince());
         stmt.setString(5, address.getPostalCode());
         stmt.setString(6, address.getCountry());
-        stmt.setDouble(7, address.getLat());
-        stmt.setDouble(8, address.getLng());
-        stmt.setObject(9, address.getCreatedAt());
-        stmt.setObject(10, address.getUpdatedAt());
-
-        stmt.executeUpdate();
-
-        ResultSet rs = stmt.getGeneratedKeys();
-        int address_id = -1;
-        if (rs.next()) {
-            address_id = rs.getInt(1);
-            address.setAddressId(address_id);
-        }
-        else throw new Exception("Problem with Generated Key in AddressDAO.addAddress");
+        return stmt;
     }
 
 

@@ -14,9 +14,8 @@ public class PrisonDAO {
         stmt.setInt(4, prison.getAddress_id());
         stmt.executeUpdate();
         ResultSet rs = stmt.getGeneratedKeys();
-        int prison_id = -1;
         if(rs.next()) {
-            prison_id = rs.getInt("prison_id");
+            int prison_id = rs.getInt(1);
             prison.setPrison_id(prison_id);
         }
         else throw new Exception("PrisonDAO.addPrison generated key issue");
@@ -37,5 +36,17 @@ public class PrisonDAO {
         stmt.setInt(1, capacity);
         stmt.setInt(2, id);
         stmt.executeUpdate();
+    }
+
+    public static String getPrisonName(int id) throws SQLException {
+        Connection connection = DataBaseConnection.getConnection();
+        String sql = "SELECT * FROM prison WHERE prison_id = ?";
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        stmt.setInt(1, id);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            return rs.getString("prison_name");
+        }
+        else throw new SQLException();
     }
 }

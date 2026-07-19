@@ -24,25 +24,7 @@ public class Main {
 //        }
 
 
-        AddressDAO addressDAO = new AddressDAO();
-        Address address = new Address("Street of Spear 67", null, "Miami",
-                "Florida", "1922", "USA", 30.9, 23.9,
-                LocalDateTime.now(), LocalDateTime.now());
-        addressDAO.addAddress(address);
 
-        Officer debra = new Officer("Debra", "Morgan", "Captain", 32, Gender.FEMALE,address.getAddressId());
-        OfficerDAO officerDAO = new OfficerDAO();
-        officerDAO.addOfficer(debra);
-
-        officerDAO.updateRank(debra.getBadge_number(), "Lieutenant");
-
-        CaseOfficer caseOfficer = new CaseOfficer(8, debra.getBadge_number());
-        CaseOfficerDAO caseOfficerDAO = new CaseOfficerDAO();
-
-        caseOfficerDAO.addCaseOfficer(caseOfficer);
-
-        CaseOfficer caseOfficer1 = new CaseOfficer(13, debra.getBadge_number());
-        caseOfficerDAO.addCaseOfficer(caseOfficer1);
-
+        SentenceDAO.getSentencesLonger(1);
     }
 }

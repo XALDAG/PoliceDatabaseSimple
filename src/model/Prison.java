@@ -10,13 +10,14 @@ public class Prison {
 
     public Prison (String name,
                    String description,
-                   int capacity) throws IllegalArgumentException{
+                   int capacity, int address_id) throws IllegalArgumentException{
 
         if (capacity < 0) throw new
                 IllegalArgumentException("CAPACITY OF THE PRISON MUST BE GREATER THAN 0");
         this.name = name.toUpperCase();
         this.description = description.toUpperCase();
         this.capacity = capacity;
+        this.address_id = address_id;
     }
 
     public void setAddress_id(int address_id) {

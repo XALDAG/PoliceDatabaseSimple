@@ -19,6 +19,10 @@ public class Sentence {
         this.end_date = end_date;
     }
 
+    public void setSentence_id(int sentence_id) {
+        this.sentence_id = sentence_id;
+    }
+
     public int getPrison_id() {
         return prison_id;
     }

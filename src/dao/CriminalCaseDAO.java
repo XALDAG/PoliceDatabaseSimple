@@ -64,4 +64,22 @@ public class CriminalCaseDAO {
         }
         return count;
     }
+
+    public static String getCriminal(int case_id) throws SQLException {
+        Connection connection = DataBaseConnection.getConnection();
+        String sql = "SELECT * FROM criminal_case WHERE case_id = ?";
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        stmt.setInt(1, case_id);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            int person_id = rs.getInt("person_id");
+            String sql2 = "SELECT * FROM person WHERE person_id = ?";
+            PreparedStatement stmt2 = connection.prepareStatement(sql2);
+            stmt2.setInt(1,person_id);
+            ResultSet rs2 = stmt2.executeQuery();
+            if (rs2.next()) return rs2.getString("first_name") + " " + rs2.getString("last_name");
+            else throw new SQLException();
+        }
+        else throw new SQLException();
+    }
 }
